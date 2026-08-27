@@ -14,16 +14,20 @@ local output_file_name = title .. ".md"
 local output_file = io.open(output_file_name, "w")
 assert(output_file, "Could not open \"" .. output_file_name .. "\"")
 
-for _, line in ipairs{
+local frontmatter = {
   "---",
   "title: \"" .. title .. "\"",
   "author: \"" .. author .. "\"",
   "publisher: \"yt-transcript-tools v0.1\"",
   "---",
   "",
-  "From [" .. link .. "](" .. link .. ")",
-  "",
-} do
+}
+
+if link and #link > 0 then
+  frontmatter[#frontmatter + 1] = "From [" .. link .. "](" .. link .. ")\n"
+end
+
+for _, line in ipairs(frontmatter) do
   output_file:write(line)
   output_file:write("\n")
 end
