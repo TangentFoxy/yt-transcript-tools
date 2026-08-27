@@ -1,5 +1,5 @@
 #!/usr/bin/env luajit
-local version = "0.2.0"
+local version = "0.2.1"
 
 local input_file_name = arg[1]
 assert(input_file_name,
@@ -49,11 +49,8 @@ end
 local output_file = io.open(output_file_name, "w")
 assert(output_file, "Could not open \"" .. output_file_name .. "\"")
 
--- TODO redo with a concat
-for _, line in ipairs(frontmatter) do
-  output_file:write(line)
-  output_file:write("\n")
-end
+output_file:write(table.concat(frontmatter, "\n"))
+output_file:write("\n")
 
 output_file:write(table.concat(output_lines, "\n"))
 output_file:write("\n")
