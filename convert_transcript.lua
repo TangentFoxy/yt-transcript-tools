@@ -13,9 +13,6 @@ local link = io.read("*line")
 local title = input_file_name:sub(1, -5)   -- assumes .txt extension
 local output_file_name = title .. ".md"
 
-local output_file = io.open(output_file_name, "w")
-assert(output_file, "Could not open \"" .. output_file_name .. "\"")
-
 local frontmatter = {
   "---",
   "title: \"" .. title .. "\"",
@@ -28,6 +25,9 @@ local frontmatter = {
 if link and #link > 0 then
   frontmatter[#frontmatter + 1] = "From [" .. link .. "](" .. link .. ")\n"
 end
+
+local output_file = io.open(output_file_name, "w")
+assert(output_file, "Could not open \"" .. output_file_name .. "\"")
 
 for _, line in ipairs(frontmatter) do
   output_file:write(line)
