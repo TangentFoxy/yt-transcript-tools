@@ -1,4 +1,6 @@
 #!/usr/bin/env luajit
+local version = "0.1"
+
 local input_file_name = arg[1]
 assert(input_file_name,
   "You must enter an input file (its name will be the title).")
@@ -18,7 +20,7 @@ local frontmatter = {
   "---",
   "title: \"" .. title .. "\"",
   "author: \"" .. author .. "\"",
-  "publisher: \"yt-transcript-tools v0.1\"",
+  "publisher: \"yt-transcript-tools v" .. version .. "\"",
   "---",
   "",
 }
