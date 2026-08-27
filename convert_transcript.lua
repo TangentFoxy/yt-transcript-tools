@@ -1,5 +1,5 @@
 #!/usr/bin/env luajit
-local version = "0.2.1"
+local version = "0.3.0"
 
 local input_file_name = arg[1]
 assert(input_file_name,
@@ -39,7 +39,7 @@ for index, line in ipairs(input_lines) do
       output_lines[#output_lines] = "```\n" .. previous_line
       output_lines[#output_lines + 1] = string.rep(" ", 6) .. line .. "\n```"
     else
-      output_lines[#output_lines + 1] = "`" .. line .. "`"
+      output_lines[#output_lines + 1] = "`" .. string.rep(" ", 6) .. line .. "`"   -- pandoc will ignore this margin
     end
   else
     output_lines[#output_lines + 1] = "`" .. line .. "`"
