@@ -1,3 +1,7 @@
+Download a transcript, place it in this directory, run
+`./convert_transcript.lua FILE`, fill in author and link as
+requested, and you will have a usable epub.
+
 This is heavily WIP.
 
 I used the apply_margin script on a transcript downloaded from
