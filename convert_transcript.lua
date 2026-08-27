@@ -1,15 +1,15 @@
 #!/usr/bin/env luajit
-local input_file_name, output_file_name = arg[1], arg[2]
-assert(input_file_name and output_file_name,
-  "You must enter an input file and output file."
-  .. "(This is for the intermediate file before an EPUB is output.)")
+local input_file_name = arg[1]
+assert(input_file_name,
+  "You must enter an input file (its name will be the title).")
 
 print("Author (YouTube channel): ")
 local author = io.read("*line")
-print("Link (paste the video URL): ")
+print("Link (paste the video URL; optional): ")
 local link = io.read("*line")
 
 local title = input_file_name:sub(1, -5)   -- assumes .txt extension
+local output_file_name = title .. ".md"
 
 local output_file = io.open(output_file_name, "w")
 assert(output_file, "Could not open \"" .. output_file_name .. "\"")
@@ -43,3 +43,6 @@ for line in io.lines(input_file_name) do
 end
 
 output_file:close()
+
+os.execute("pandoc --from markdown+hard_line_breaks \""
+  .. output_file_name .. "\" -o \"" .. title .. ".epub\"")
