@@ -18,3 +18,7 @@ the export will be different enough to fuck up the margin fix.
 I am really frustrated because pandoc doesn't support plain text.
 I went through many tests and iterations before coming to even
 this minimal start and it was extremely frustrating.
+
+## Tasks
+- [ ] I need an option / 2nd script to output a version with no
+  timecode formatting for easier text extraction.
