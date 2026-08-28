@@ -20,5 +20,7 @@ I went through many tests and iterations before coming to even
 this minimal start and it was extremely frustrating.
 
 ## Tasks
-- [ ] I need an option / 2nd script to output a version with no
+- [x] I need an option / 2nd script to output a version with no
   timecode formatting for easier text extraction.
+  - I made it actually just combine both in the same document,
+    easier to manage that way.
