@@ -1,3 +1,6 @@
+# yt-transcript-tools
+Getting transcripts into epub format.
+
 Download a transcript, place it in this directory, run
 `./convert_transcript.lua FILE`, fill in author and link as
 requested, and you will have a usable epub.
