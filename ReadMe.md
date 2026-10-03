@@ -1,9 +1,12 @@
 # yt-transcript-tools
 Getting transcripts into epub format.
 
-Download a transcript, place it in this directory, run
-`./convert_transcript.lua FILE`, fill in author and link as
-requested, and you will have a usable epub.
+[Download a transcript](https://www.youtube-transcript.io/),
+place it in this directory, run `./convert_transcript.lua FILE`,
+fill in author and link as requested, and you will have a usable
+epub.
+
+(I also use thumbnails as the "cover" by grabbing them [here](https://www.get-youtube-thumbnail.com/).)
 
 **The file name will be set as the title.**
 
