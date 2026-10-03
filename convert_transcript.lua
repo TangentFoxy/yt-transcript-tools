@@ -33,19 +33,33 @@ end
 
 local output_lines = {}
 local timecode_free_lines = {}
-for index, line in ipairs(input_lines) do
-  if not (line:sub(3, 3) == ":") then
-    local previous_line = input_lines[index - 1]
-    if previous_line and previous_line:sub(3, 3) == ":" then
-      output_lines[#output_lines] = "```\n" .. previous_line
-      output_lines[#output_lines + 1] = string.rep(" ", 6) .. line .. "\n```"
-    else
-      output_lines[#output_lines + 1] = "`" .. string.rep(" ", 6) .. line .. "`"   -- pandoc will ignore this margin
+
+if arg[2] == "--tube" then   -- transcript from https://tubetranscript.com/
+  for i = 4, #input_lines do
+    local line = input_lines[i]
+    output_lines[#output_lines + 1] = line
+
+    line = line:sub(9)
+    if line:sub(1, 1) == ")" then   -- handle very long videos
+      line = line:sub(3)
     end
     timecode_free_lines[#timecode_free_lines + 1] = line
-  else
-    output_lines[#output_lines + 1] = "`" .. line .. "`"
-    timecode_free_lines[#timecode_free_lines + 1] = line:sub(7)
+  end
+else
+  for index, line in ipairs(input_lines) do
+    if not (line:sub(3, 3) == ":") then
+      local previous_line = input_lines[index - 1]
+      if previous_line and previous_line:sub(3, 3) == ":" then
+        output_lines[#output_lines] = "```\n" .. previous_line
+        output_lines[#output_lines + 1] = string.rep(" ", 6) .. line .. "\n```"
+      else
+        output_lines[#output_lines + 1] = "`" .. string.rep(" ", 6) .. line .. "`"   -- pandoc will ignore this margin
+      end
+      timecode_free_lines[#timecode_free_lines + 1] = line
+    else
+      output_lines[#output_lines + 1] = "`" .. line .. "`"
+      timecode_free_lines[#timecode_free_lines + 1] = line:sub(7)
+    end
   end
 end
 
