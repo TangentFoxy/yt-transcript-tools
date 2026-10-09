@@ -5,6 +5,10 @@ Getting transcripts into epub format.
 place it in this directory, run `./convert_transcript.lua FILE`,
 fill in author and link as requested, and you will have a usable
 epub.
+- If that website fails to select the correct language, you can
+  use https://tubetranscript.com/ and pass `--tube` as a 2nd
+  argument to use that output instead, but the quality will be
+  worse.
 
 (I also use thumbnails as the "cover" by grabbing them [here](https://www.get-youtube-thumbnail.com/).)
 
